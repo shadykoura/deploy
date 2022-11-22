@@ -19,7 +19,7 @@ jobs:
           command: "echo Hello, World!"
       - run:
           name: "What was my custom environment variable?"
-          command: echo ${ENV_VAR1}
+          command: echo ${env_var1}
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows

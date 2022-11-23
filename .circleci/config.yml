@@ -43,6 +43,15 @@ jobs:
       - run:
           name: "print output"
           command: cat ~/output.txt
+      - run:
+         name: "fail on purpose"
+         command:  return 1
+      - run:
+         name: "failed"
+         command:  echo "failed"         
+         when: on_fail
+
+
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:

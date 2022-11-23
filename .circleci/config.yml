@@ -18,9 +18,6 @@ jobs:
       - run:
           name: "Say hello"
           command: echo "hello world" > output.txt
-      - run:
-          name: "What was my custom environment variable?"
-          command: "echo ${$MY_ENV_VAR}"
       - persist_to_workspace:
          root: /tmp/workspace
          paths:

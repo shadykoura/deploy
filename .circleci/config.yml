@@ -43,9 +43,9 @@ jobs:
       - run:
           name: "print output"
           command: cat ~/output.txt
-      - run:
-         name: "fail on purpose"
-         command:  return 1
+        #run:
+         #name: "fail on purpose"
+         #command:  return 1
       - run:
          name: "failed"
          command:  echo "failed"         

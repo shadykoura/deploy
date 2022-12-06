@@ -20,7 +20,7 @@ jobs:
             name: Create Cloudformation Stack
             command: |
               aws cloudformation deploy \
-                --template-file shadykoura/hello-world/template.yml \
+                --template-file /shadykoura/hello-world/template.yml \
                 --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:5} \
                 --region us-east-1
 # Invoke jobs via workflows

@@ -25,9 +25,16 @@ jobs:
              #   --region us-east-1
   configure_infrastructure: 
    docker:
-    - image: python:3.7-alpine3.11
+    - image: cimg/node:13.8.0
    steps:
     - checkout
+    - run:
+        command: |
+         apt  update 
+         apt upgrade -Y
+         apt install python3-pip -Y
+
+
     - add_ssh_keys:
             # You can get this ID in the section where you registered the SSH Key
             fingerprints: 

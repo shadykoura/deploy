@@ -25,27 +25,17 @@ jobs:
              #   --region us-east-1
   configure_infrastructure: 
    docker:
-    - image: cimg/node:13.8.0
+    - image: python:3.7-alpine3.11
    steps:
     - checkout
-
-    - run:
-        command: apt upgrade 
-    - run:
-        command: apt install python3-pip 
-        
-    - run:
-        command: pip3 install --upgrade pip
-
-
     - add_ssh_keys:
             # You can get this ID in the section where you registered the SSH Key
             fingerprints: 
-              - "d1:4d:e1:5e:49:d2:73:58:f5:21:80:b4:a8:cd:5c:2d"
-
+              - "ca:fe:eb:61:28:a6:90:92:e8:4a:1d:88:f6:5b:2d:9d"
+              - "3d:47:17:9e:95:97:00:a0:57:b2:aa:ee:df:cb:77:2d"
     - run:
         name: Install Ansible
-        command: pip3 install ansible
+        command: apk add --update ansible
   
     
     - run:

@@ -30,7 +30,7 @@ jobs:
     - checkout
     - add_ssh_keys:
             # You can get this ID in the section where you registered the SSH Key
-            fingerprints: ["09:f6:ad:3e:60:9e:3d:fe:97:10:1c:5c:a3:e3:b3:84"] 
+            fingerprints: ["32:2c:79:e5:d3:a2:3c:22:a1:9c:35:38:af:fc:b5:04"] 
     - run:
         name: Install Ansible
         command: apk add --update ansible

@@ -32,6 +32,7 @@ jobs:
             # You can get this ID in the section where you registered the SSH Key
             fingerprints: 
               - "09:f6:ad:3e:60:9e:3d:fe:97:10:1c:5c:a3:e3:b3:84"
+              - "76:fc:f1:43:90:db:0b:9c:1a:4c:fc:5e:35:54:03:79"
     - run:
         name: Install Ansible
         command: apk add --update ansible

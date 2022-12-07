@@ -28,8 +28,7 @@ jobs:
     - image: cimg/node:13.8.0
    steps:
     - checkout
-    - run:
-        command: apt  update 
+
     - run:
         command: apt upgrade -Y
     - run:

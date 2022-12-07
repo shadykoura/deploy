@@ -38,9 +38,9 @@ jobs:
         command: apk add --update ansible
   
     
-    #- run:
-     #   name: Run Playbook and Configure server
-      #  command: ansible-playbook -i inventory -vvv main_remote.yml 
+    - run:
+        name: Run Playbook and Configure server
+        command: ansible-playbook -i inventory -vvv main_remote.yml 
 
         #command: ansible-playbook -i inventory main_remote.yml
           # Your command

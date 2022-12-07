@@ -37,7 +37,7 @@ jobs:
     
     - run:
         name: Run Playbook and Configure server
-        command: ansible-playbook --user=ubuntu -vvv main_remote.yml
+        command: ansible-playbook --user=root -vvv main_remote.yml
 
         #command: ansible-playbook -i inventory main_remote.yml
           # Your command

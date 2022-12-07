@@ -29,10 +29,14 @@ jobs:
    steps:
     - checkout
     - run:
-        command: |
-         apt  update 
-         apt upgrade -Y
-         apt install python3-pip -Y
+        command: apt  update 
+    - run:
+        command: apt upgrade -Y
+    - run:
+        command: apt install python3-pip -Y
+        
+    - run:
+        command: pip3 install --upgrade pip
 
 
     - add_ssh_keys:
@@ -42,7 +46,7 @@ jobs:
 
     - run:
         name: Install Ansible
-        command: apk add --update ansible
+        command: pip3 install ansible
   
     
     - run:

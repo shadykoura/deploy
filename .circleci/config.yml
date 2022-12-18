@@ -19,8 +19,7 @@ commands:
            # ${CIRCLE_WORKFLOW_ID:0:5} takes the first 5 chars of the variable CIRCLE_CI_WORKFLOW_ID 
            when: on_fail
            command: |
-              - set -eu -o pipefail
-              - aws cloudformation delete-stack \
+               aws cloudformation delete-stack \
                --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:7}
 
 jobs:
@@ -60,21 +59,14 @@ jobs:
 
   smoke_test:
    docker:
-    - image: alpine:latest
+    - image: amazon/aws-cli
    steps:
     - run: apk add --update curl
     - run:
         name: smoke test
         command: |
           return 1
-    - run:
-        name: Destroy environment
-        # ${CIRCLE_WORKFLOW_ID} is a Built-in environment variable 
-        # ${CIRCLE_WORKFLOW_ID:0:5} takes the first 5 chars of the variable CIRCLE_CI_WORKFLOW_ID 
-        when: on_fail
-        command: aws cloudformation delete-stack --stack-name myStack-eb67e85
-          #aws cloudformation delete-stack \
-           # --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:7}
+    - destroy_environment
     #command: ansible-playbook -i inventory main_remote.yml
       # Your command
 # Invoke jobs via workflows
@@ -82,10 +74,10 @@ jobs:
 workflows:
   aws-cli:
       jobs:
-      #- create_infrastructure
-      - smoke_test
-          # requires: 
-           #- create_infrastructure
+      - create_infrastructure
+      - smoke_test:
+           requires: 
+            - create_infrastructure
 
 
 

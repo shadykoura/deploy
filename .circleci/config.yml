@@ -28,7 +28,7 @@ jobs:
         - checkout
         - run:
             name: Create Cloudformation Stack
-            command: |
+            command: |  
               aws cloudformation deploy \
                 --template-file template.yml \
                 --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:7} \
@@ -62,13 +62,8 @@ jobs:
     - run:
         name: smoke test
         command: |
-          if curl -s --head  "https://blog.udacity.com/" 
-          then
-            echo "It worked!"
-          else
-            echo "It failed"
-          fi
-
+          return 1
+    - destroy_environment 
         #command: ansible-playbook -i inventory main_remote.yml
           # Your command
 # Invoke jobs via workflows
@@ -76,7 +71,12 @@ jobs:
 workflows:
   MY-workflow:
     jobs:
-      - smoke_test
-      #- create_infrastructure
+      - create_infrastructure
+      - smoke_test:
+           requires: 
+           - create_infrastructure
+
+
+
 
  

@@ -17,7 +17,8 @@ commands:
            # ${CIRCLE_WORKFLOW_ID:0:5} takes the first 5 chars of the variable CIRCLE_CI_WORKFLOW_ID 
            when: on_fail
            command: |
-              aws cloudformation delete-stack \
+              - set -eu -o pipefail
+              - aws cloudformation delete-stack \
                --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:7}
 
 jobs:
@@ -70,7 +71,8 @@ jobs:
         # ${CIRCLE_WORKFLOW_ID:0:5} takes the first 5 chars of the variable CIRCLE_CI_WORKFLOW_ID 
         when: on_fail
         command: |
-         aws cloudformation delete-stack \
+         - set -eu -o pipefail
+         - aws cloudformation delete-stack \
             --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:7}
     #command: ansible-playbook -i inventory main_remote.yml
       # Your command

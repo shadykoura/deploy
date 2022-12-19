@@ -123,7 +123,8 @@ jobs:
         # Similarly, you can create and use $OldStackID environment variable in place of production-distro 
         command: |
           export OldBucketID=$(cat ~/textfile.txt)
-          aws s3 rm "s3://${OldBucketID}" --recursive  --region us-east-1
+          echo $OldBucketID
+          aws s3 rm "s3://shadykoura" --recursive  --region us-east-1
   smoke_test:
    docker:
     - image: amazon/aws-cli

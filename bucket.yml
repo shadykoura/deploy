@@ -1,10 +1,10 @@
 Parameters:
 # New Bucket name
-MyBucketName:
+ MyBucketName:
   Description: Existing Bucket name
   Type: String
 Resources:
-WebsiteBucket:
+ WebsiteBucket:
   Type: AWS::S3::Bucket
   Properties:
     BucketName: !Sub "${MyBucketName}"
@@ -12,7 +12,7 @@ WebsiteBucket:
     WebsiteConfiguration:
       IndexDocument: index.html
       ErrorDocument: error.html
-WebsiteBucketPolicy:
+ WebsiteBucketPolicy:
   Type: AWS::S3::BucketPolicy
   Properties:
     Bucket: !Ref 'WebsiteBucket'
